@@ -14,6 +14,8 @@
     $.ajax({
       url:
         "https://rest.cricketapi.com/rest/v2/recent_matches/?access_token=2s1115615224762863633s1115977913070668973",
+      type: "GET",
+      dataType: "application/json",
       success: result => {
         console.log(result);
       }
