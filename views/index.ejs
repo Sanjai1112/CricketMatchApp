@@ -9,4 +9,13 @@
   <body>
     <h4>Live Score</h4>
   </body>
+  <script>
+    $.ajax({
+      url:
+        "https://rest.cricketapi.com/rest/v2/recent_matches/?access_token=2s1115615224762863633s1115977913070668973",
+      success: result => {
+        console.log(result);
+      }
+    });
+  </script>
 </html>
