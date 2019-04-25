@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Live Score</title>
+    <style></style>
   </head>
   <body>
     <h4>Live Score</h4>
+    <a href="/matches">View Matches</a>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
-    $.ajax({
-      url:
-        "https://rest.cricketapi.com/rest/v2/recent_matches/?access_token=2s1115615224762863633s1115977913070668973",
-      type: "GET",
-      dataType: "json",
-      crossDomain: true,
-      success: result => {
-        console.log(result);
-      }
-    });
+    // $.ajax({
+    //   url:
+    //     "https://rest.cricketapi.com/rest/v2/recent_matches/?access_token=2s1115615224762863633s1115977913070668973",
+    //   type: "GET",
+    //   dataType: "json",
+    //   crossDomain: true,
+    //   success: result => {
+    //     console.log(result);
+    //   }
+    // });
   </script>
 </html>
