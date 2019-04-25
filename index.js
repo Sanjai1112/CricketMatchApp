@@ -2,10 +2,15 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const http = require("http");
-
+const path = require("path");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -21,24 +26,6 @@ app.get("/matches", (request, response) => {
     .get(
       "http://cricapi.com/api/matches?apikey=ceTb1jjmV4PZCnj6TBjkuOgu26W2",
       res => {
-        const { statusCode } = res;
-        const contentType = res.headers["content-type"];
-        let error;
-        if (statusCode !== 200) {
-          error = new Error("Request Failed.\n" + `Status Code: ${statusCode}`);
-        } else if (!/^application\/json/.test(contentType)) {
-          error = new Error(
-            "Invalid content-type.\n" +
-              `Expected application/json but received ${contentType}`
-          );
-        }
-        if (error) {
-          console.error(error.message);
-          // Consume response data to free up memory
-          res.resume();
-          return;
-        }
-
         res.setEncoding("utf8");
         let rawData = "";
         res.on("data", chunk => {

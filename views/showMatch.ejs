@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Live Score</title>
-  </head>
-  <body>
-    <h4>Matches</h4>
-    <%matches.forEach(data => {%>
-    <p><%=JSON.stringify(data)%></p>
-    <%})%>
-  </body>
-</html>
+<%-include ./partials/header.ejs%>
+<h4>Matches</h4>
+<div class="row">
+  <%matches.forEach(data => {%>
+  <div class="col-md-4 col-lg-3 col-sm-6 col-xs-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"><%=data['team-1'] %> VS <%= data['team-2']%></h4>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <h4 class="card-title"><%=new Date(data.dateTimeGMT)%></h4>
+          <h4 class="card-subtitle">Type:<%=data.type%></h4>
+          <%- data.toss_winner_team!==undefined || data.toss_winner_team!==NaN
+          || data.toss_winner_team!=="" ? `
+          <h4 class="card-subtitle">Toss:${data.toss_winner_team}</h4>
+          `:""%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%})%>
+</div>
+<%-include ./partials/footer.ejs%>
