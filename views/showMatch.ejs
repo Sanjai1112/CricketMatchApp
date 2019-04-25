@@ -11,10 +11,10 @@
         <div class="card-text">
           <h4 class="card-title"><%=new Date(data.dateTimeGMT)%></h4>
           <h4 class="card-subtitle">Type:<%=data.type%></h4>
-          <%- data.toss_winner_team!==undefined || data.toss_winner_team!==NaN
-          || data.toss_winner_team!=="" ? `
-          <h4 class="card-subtitle">Toss: data.toss_winner_team</h4>
-          `:""%>
+          <h4 class="card-subtitle">
+            Toss:<%=data.toss_winner_team!==undefined?data.toss_winner_team:new
+            String("Not yet tossed")%>
+          </h4>
         </div>
       </div>
     </div>
