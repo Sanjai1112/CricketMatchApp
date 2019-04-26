@@ -9,12 +9,19 @@
       </div>
       <div class="card-body">
         <div class="card-text">
-          <h4 class="card-title"><%=new Date(data.dateTimeGMT)%></h4>
+          <h4 class="card-title">
+            <%=new Date(data.dateTimeGMT)%>
+          </h4>
           <h4 class="card-subtitle">Type:<%=data.type%></h4>
           <h4 class="card-subtitle">
             Toss:<%=data.toss_winner_team!==undefined?data.toss_winner_team:new
             String("Not yet tossed")%>
           </h4>
+          <%if(data.matchStarted){%>
+          <h4 class="card-subtitle">
+            <a href="/match/<%=data.unique_id%>">View match</a>
+          </h4>
+          <%}%>
         </div>
       </div>
     </div>
