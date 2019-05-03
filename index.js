@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -45,16 +46,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/matches", async (req, res) => {
+app.get("/matches", (req, res) => {
   // http.get(
-  //   "http://cricapi.com/api/matches?apikey=ceTb1jjmV4PZCnj6TBjkuOgu26W2",
+  //   `http://cricapi.com/api/matches?apikey=${process.env.CRIC_API_KEY}`,
   //   recData => {
   //     console.log(recData);
   //     res.redirect("/");
   //   }
   // );
-  await cricapiCall(
-    "http://cricapi.com/api/matches?apikey=ceTb1jjmV4PZCnj6TBjkuOgu26W2"
+  cricapiCall(
+    `http://cricapi.com/api/matches?apikey=${process.env.CRIC_API_KEY}`
   )
     .then(result => {
       // console.log(result);
@@ -66,7 +67,9 @@ app.get("/matches", async (req, res) => {
     });
 });
 
-app.get("/match/:id", (req, res) => {});
+app.get("/match/:id", (req, res) => {
+  //Unique match
+});
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server started at ${port}`);
